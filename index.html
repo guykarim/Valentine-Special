@@ -20,14 +20,23 @@
   }
 
   h1 {
-    font-size: 1.8em; /* smaller */
+    font-size: 1.8em;
     color: #fff;
     text-shadow: 2px 2px #d94f70;
     margin-bottom: 30px;
+    transition: all 1s ease;
+  }
+
+  .fancy-title {
+    background: linear-gradient(90deg, #ff6ec4, #7873f5, #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px rgba(0,0,0,0.2);
+    font-size: 2em;
   }
 
   button {
-    font-size: 1em;  /* smaller */
+    font-size: 1em;
     padding: 10px 20px;
     margin: 15px;
     cursor: pointer;
@@ -62,14 +71,14 @@
     display: none;
     margin-top: 20px;
     max-width: 90%;
-    max-height: 65vh; /* smaller so text fits */
-    overflow-y: auto;  /* scroll if needed */
+    max-height: 65vh;
+    overflow-y: auto;
     animation: fadeIn 1s forwards;
     padding: 10px;
   }
 
   #result img {
-    width: 50%;       /* smaller image */
+    width: 50%;
     max-width: 250px;
     height: auto;
     border-radius: 20px;
@@ -77,7 +86,7 @@
   }
 
   #result p {
-    font-size: 1em;     /* much smaller */
+    font-size: 1em;
     margin-top: 10px;
     color: #fff;
     text-shadow: 2px 2px #d94f70;
@@ -92,7 +101,7 @@
 
   .heart {
     position: absolute;
-    width: 15px;      /* smaller hearts */
+    width: 15px;
     height: 15px;
     background: red;
     transform: rotate(-45deg);
@@ -125,7 +134,7 @@
 </head>
 <body>
 
-<h1>Will you be my Valentine?</h1>
+<h1 id="mainTitle">Will you be my Valentine?</h1>
 
 <button id="yesBtn">Yes</button>
 <button id="noBtn">No</button>
@@ -138,8 +147,7 @@ Every moment with you I never want to lose.
 Your smile turns my gray skies blue,
 My world is perfect because of you.
 
-On this Valentine’s, I have just one plea,
-Click “Yes” and stay forever with me. 💖
+Since you clicked yes, you are mine forever 😘💖💍❤️
   </p>
 </div>
 
@@ -147,6 +155,7 @@ Click “Yes” and stay forever with me. 💖
   const noBtn = document.getElementById('noBtn');
   const yesBtn = document.getElementById('yesBtn');
   const result = document.getElementById('result');
+  const mainTitle = document.getElementById('mainTitle');
 
   // Floating hearts
   function createHeart() {
@@ -179,6 +188,9 @@ Click “Yes” and stay forever with me. 💖
     yesBtn.style.display = 'none';
     noBtn.style.display = 'none';
     result.style.display = 'block';
+    // Fancy new title
+    mainTitle.innerHTML = '💖 Thank you for being my Valentine, I love you wifey 💌💕💍';
+    mainTitle.classList.add('fancy-title');
   });
 </script>
 
