@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 2px 2px #d94f70;
+    margin-bottom: 50px;
+  }
+
+  button {
+    font-size: 1.5em;
+    padding: 15px 30px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  #yesBtn {
+    background-color: #ff4b5c;
+    color: white;
+    box-shadow: 0 0 10px #ff4b5c;
+    animation: glow 1.5s infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 10px #ff4b5c; }
+    100% { box-shadow: 0 0 30px #ff6e82; }
+  }
+
+  #noBtn {
+    background-color: #ffe066;
+    color: #333;
+    position: absolute;
+  }
+
+  #result {
+    display: none;
+    margin-top: 30px;
+    animation: fadeIn 1s forwards;
+  }
+
+  #result img {
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  #result p {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #fff;
+    text-shadow: 2px 2px #d94f70;
+    animation: fadeInText 2s forwards;
+    line-height: 1.6em;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes fadeInText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: float 5s infinite;
+  }
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: 10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Will you be my Valentine?</h1>
+
+<button id="yesBtn">Yes</button>
+<button id="noBtn">No</button>
+
+<div id="result">
+  <img src="dola.jpeg" alt="Us Together">
+  <p>
+    Dola, my love, my heart, my muse,<br>
+    Every moment with you I never want to lose.<br>
+    Your smile turns my gray skies blue,<br>
+    My world is perfect because of you.<br><br>
+    On this Valentine’s, I have just one plea,<br>
+    Click “Yes” and stay forever with me. 💖
+  </p>
+</div>
+
+<script>
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const result = document.getElementById('result');
+
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+  }
+  setInterval(createHeart, 300);
+
+  // No button moves away
+  document.addEventListener('mousemove', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+    const btnX = noBtn.offsetLeft + noBtn.offsetWidth / 2;
+    const btnY = noBtn.offsetTop + noBtn.offsetHeight / 2;
+    const distance = Math.hypot(btnX - x, btnY - y);
+    if(distance < 120){
+      const newX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const newY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = newX + 'px';
+      noBtn.style.top = newY + 'px';
+    }
+  });
+
+  // Yes button click
+  yesBtn.addEventListener('click', () => {
+    yesBtn.style.display = 'none';
+    noBtn.style.display = 'none';
+    result.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
