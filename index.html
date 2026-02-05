@@ -20,15 +20,15 @@
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 1.8em; /* smaller */
     color: #fff;
     text-shadow: 2px 2px #d94f70;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   button {
-    font-size: 1.2em;
-    padding: 12px 25px;
+    font-size: 1em;  /* smaller */
+    padding: 10px 20px;
     margin: 15px;
     cursor: pointer;
     border-radius: 12px;
@@ -53,7 +53,7 @@
     background-color: #ffe066;
     color: #333;
     position: absolute;
-    left: 50%; /* start in center */
+    left: 50%; 
     top: 60%;
     transform: translate(-50%, -50%);
   }
@@ -61,29 +61,28 @@
   #result {
     display: none;
     margin-top: 20px;
-    max-width: 80%;
-    max-height: 70vh;
-    overflow-y: auto;
+    max-width: 90%;
+    max-height: 65vh; /* smaller so text fits */
+    overflow-y: auto;  /* scroll if needed */
     animation: fadeIn 1s forwards;
     padding: 10px;
   }
 
   #result img {
-    width: 60%;          /* smaller image */
-    max-width: 300px;
+    width: 50%;       /* smaller image */
+    max-width: 250px;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   }
 
   #result p {
-    font-size: 1.2em;    /* smaller text */
-    margin-top: 15px;
+    font-size: 1em;     /* much smaller */
+    margin-top: 10px;
     color: #fff;
     text-shadow: 2px 2px #d94f70;
-    animation: fadeInText 2s forwards;
-    line-height: 1.8em;
-    white-space: pre-line;
+    line-height: 1.6em;
+    white-space: pre-line; 
   }
 
   @keyframes fadeIn {
@@ -91,15 +90,10 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  @keyframes fadeInText {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   .heart {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 15px;      /* smaller hearts */
+    height: 15px;
     background: red;
     transform: rotate(-45deg);
     animation: float 5s infinite;
@@ -108,25 +102,24 @@
   .heart::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background: red;
     border-radius: 50%;
   }
-  .heart::before { top: -10px; left: 0; }
-  .heart::after { left: 10px; top: 0; }
+  .heart::before { top: -7.5px; left: 0; }
+  .heart::after { left: 7.5px; top: 0; }
 
   @keyframes float {
     0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
     100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
   }
 
-  /* Responsive adjustments */
   @media(max-width: 500px) {
-    h1 { font-size: 1.8em; }
-    button { font-size: 1em; padding: 8px 18px; }
-    #result p { font-size: 1em; line-height: 1.6em; }
-    #result img { width: 80%; max-width: 250px; }
+    h1 { font-size: 1.5em; }
+    button { font-size: 0.9em; padding: 8px 15px; }
+    #result p { font-size: 0.9em; line-height: 1.4em; }
+    #result img { width: 70%; max-width: 200px; }
   }
 </style>
 </head>
@@ -166,14 +159,14 @@ Click “Yes” and stay forever with me. 💖
   }
   setInterval(createHeart, 300);
 
-  // Constrain No button movement inside viewport
+  // Constrain No button inside viewport
   document.addEventListener('mousemove', (e) => {
     const x = e.clientX;
     const y = e.clientY;
     const btnX = noBtn.offsetLeft + noBtn.offsetWidth / 2;
     const btnY = noBtn.offsetTop + noBtn.offsetHeight / 2;
     const distance = Math.hypot(btnX - x, btnY - y);
-    if(distance < 120){
+    if(distance < 100){
       const newX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
       const newY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
       noBtn.style.left = Math.max(0, Math.min(newX, window.innerWidth - noBtn.offsetWidth)) + 'px';
