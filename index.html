@@ -58,11 +58,17 @@
   #result {
     display: none;
     margin-top: 30px;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
     animation: fadeIn 1s forwards;
+    padding: 10px;
   }
 
   #result img {
+    width: 80%;
     max-width: 400px;
+    height: auto;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   }
@@ -73,7 +79,8 @@
     color: #fff;
     text-shadow: 2px 2px #d94f70;
     animation: fadeInText 2s forwards;
-    line-height: 1.6em;
+    line-height: 2em;
+    white-space: pre-line; /* preserves line breaks */
   }
 
   @keyframes fadeIn {
@@ -110,6 +117,13 @@
     0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
     100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
   }
+
+  /* Responsive adjustments */
+  @media(max-width: 500px) {
+    h1 { font-size: 2em; }
+    button { font-size: 1.2em; padding: 10px 20px; }
+    #result p { font-size: 1.2em; line-height: 1.8em; }
+  }
 </style>
 </head>
 <body>
@@ -122,12 +136,13 @@
 <div id="result">
   <img src="dola.jpeg" alt="Us Together">
   <p>
-    Dola, my love, my heart, my muse,<br>
-    Every moment with you I never want to lose.<br>
-    Your smile turns my gray skies blue,<br>
-    My world is perfect because of you.<br><br>
-    On this Valentine’s, I have just one plea,<br>
-    Click “Yes” and stay forever with me. 💖
+Dola, my love, my heart, my muse,
+Every moment with you I never want to lose.
+Your smile turns my gray skies blue,
+My world is perfect because of you.
+
+On this Valentine’s, I have just one plea,
+Click “Yes” and stay forever with me. 💖
   </p>
 </div>
 
